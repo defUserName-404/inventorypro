@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inventorypro/screens/main_screen.dart';
 
 void main() {
   runApp(const App());
@@ -12,9 +13,10 @@ class App extends StatelessWidget {
     return MaterialApp(
         title: 'Inventory Pro',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0x00002b72)),
           useMaterial3: true,
         ),
-        home: Container(color: Colors.deepPurpleAccent));
+        debugShowCheckedModeBanner: false,
+        home: const MainScreen());
   }
 }
