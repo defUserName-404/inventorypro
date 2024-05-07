@@ -13,7 +13,7 @@ class App extends StatelessWidget {
     return MaterialApp(
         title: 'Inventory Pro',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0x00002b72)),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF101540)),
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
