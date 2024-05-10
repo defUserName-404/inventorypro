@@ -1,58 +1,57 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class VerticalAppBar extends StatefulWidget {
-  const VerticalAppBar({super.key});
+  final int selectedIndex;
+  final ValueChanged<int> onDestinationSelected;
+
+  const VerticalAppBar(
+      {super.key,
+      required this.selectedIndex,
+      required this.onDestinationSelected});
 
   @override
   State<VerticalAppBar> createState() => _VerticalAppBarState();
 }
 
 class _VerticalAppBarState extends State<VerticalAppBar> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final colorTheme = Theme.of(context).colorScheme;
     return NavigationRail(
-        selectedIndex: _selectedIndex,
+        selectedIndex: widget.selectedIndex,
         groupAlignment: -1,
-        backgroundColor: colorTheme.onSurface,
-        onDestinationSelected: (int index) {
-          setState(() => _selectedIndex = index);
-          log('index $index');
-        },
+        backgroundColor: colorTheme.primary,
+        onDestinationSelected: widget.onDestinationSelected,
         labelType: NavigationRailLabelType.none,
         destinations: [
           CustomNavigationRailDestination(
             icon: Icons.dashboard_outlined,
             selectedIcon: Icons.dashboard,
             label: 'Dashboard',
-            isSelected: _selectedIndex == 0,
+            isSelected: widget.selectedIndex == 0,
             highlightColor: colorTheme.onPrimary,
           ),
           CustomNavigationRailDestination(
             icon: Icons.computer_outlined,
             selectedIcon: Icons.computer,
             label: 'Items',
-            isSelected: _selectedIndex == 1,
+            isSelected: widget.selectedIndex == 1,
             highlightColor: colorTheme.onPrimary,
           ),
           CustomNavigationRailDestination(
             icon: Icons.account_circle_outlined,
             selectedIcon: Icons.account_circle,
             label: 'Users',
-            isSelected: _selectedIndex == 2,
+            isSelected: widget.selectedIndex == 2,
             highlightColor: colorTheme.onPrimary,
           ),
-          CustomNavigationRailDestination(
-            icon: Icons.account_circle_outlined,
-            selectedIcon: Icons.account_circle,
-            label: 'Report Statistics',
-            isSelected: _selectedIndex == 3,
-            highlightColor: colorTheme.onPrimary,
-          ),
+          // CustomNavigationRailDestination(
+          //   icon: Icons.account_circle_outlined,
+          //   selectedIcon: Icons.account_circle,
+          //   label: 'Report Statistics',
+          //   isSelected: widget.selectedIndex == 3,
+          //   highlightColor: colorTheme.onPrimary,
+          // ),
         ],
         useIndicator: false,
         selectedIconTheme: Theme.of(context)
@@ -77,7 +76,7 @@ class CustomNavigationRailDestination extends NavigationRailDestination {
               color: isSelected
                   ? Colors.white.withOpacity(0.5)
                   : Colors.transparent,
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
             ),
             child: Column(
               children: [
@@ -92,7 +91,7 @@ class CustomNavigationRailDestination extends NavigationRailDestination {
               color: isSelected
                   ? highlightColor.withOpacity(0.3)
                   : Colors.transparent,
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
             ),
             child: Column(
               children: [
