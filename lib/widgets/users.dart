@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../db/db_helper.dart';
+import '../models/user.dart';
+
 class UserContent extends StatefulWidget {
   const UserContent({super.key});
 
@@ -9,11 +12,60 @@ class UserContent extends StatefulWidget {
 
 class _UserContentState extends State<UserContent> {
   late final ScrollController _scrollController;
+  final DatabaseHelper _dbHelper = DatabaseHelper();
+  List<User> _users = [];
+  String _searchQuery = '';
+
+  Future<void> _refreshUsers() async {
+    final users = await _dbHelper.getUsers(_searchQuery);
+    setState(() => _users = users);
+  }
+
+  void _showAddUserDialog() {
+    TextEditingController nameController = TextEditingController();
+    TextEditingController roleController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Add User'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+                controller: nameController,
+                decoration: const InputDecoration(labelText: 'Name')),
+            TextField(
+                controller: roleController,
+                decoration: const InputDecoration(labelText: 'Role')),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () async {
+              await _dbHelper.insertUser(User(
+                name: nameController.text,
+                role: roleController.text,
+              ));
+              Navigator.pop(context);
+              _refreshUsers();
+            },
+            child: const Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   void initState() {
     _scrollController = ScrollController();
     super.initState();
+    _refreshUsers();
   }
 
   @override
@@ -28,13 +80,13 @@ class _UserContentState extends State<UserContent> {
     final titleFontSize = Theme.of(context).textTheme.titleLarge!.fontSize;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Test'),
+          title: const Text('Users'),
           titleSpacing: 16,
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: TextButton.icon(
-                  onPressed: () {},
+                  onPressed: _showAddUserDialog,
                   label: Text('New', style: TextStyle(fontSize: titleFontSize)),
                   icon: const Icon(
                     Icons.add,
@@ -66,7 +118,7 @@ class _UserContentState extends State<UserContent> {
                     child: SearchBar(
                       hintText: 'Search here',
                       leading: const Icon(Icons.search),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)))),
@@ -111,7 +163,7 @@ class _UserContentState extends State<UserContent> {
                   DataTable(
                     columns: _createColumns(),
                     rows: _createRows(),
-                    headingRowColor: MaterialStateProperty.all<Color>(
+                    headingRowColor: WidgetStateProperty.all<Color>(
                         colorTheme.tertiaryContainer),
                   ),
                 ]),

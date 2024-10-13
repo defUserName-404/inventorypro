@@ -45,13 +45,6 @@ class _VerticalAppBarState extends State<VerticalAppBar> {
             isSelected: widget.selectedIndex == 2,
             highlightColor: colorTheme.onPrimary,
           ),
-          // CustomNavigationRailDestination(
-          //   icon: Icons.account_circle_outlined,
-          //   selectedIcon: Icons.account_circle,
-          //   label: 'Report Statistics',
-          //   isSelected: widget.selectedIndex == 3,
-          //   highlightColor: colorTheme.onPrimary,
-          // ),
         ],
         useIndicator: false,
         selectedIconTheme: Theme.of(context)

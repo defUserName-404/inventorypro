@@ -28,7 +28,7 @@ class _ItemContentState extends State<ItemContent> {
     final titleFontSize = Theme.of(context).textTheme.titleLarge!.fontSize;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Test'),
+          title: const Text('Items'),
           titleSpacing: 16,
           actions: [
             Padding(
@@ -66,7 +66,7 @@ class _ItemContentState extends State<ItemContent> {
                     child: SearchBar(
                       hintText: 'Search here',
                       leading: const Icon(Icons.search),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                           const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8.0)))),
@@ -118,167 +118,4 @@ class _ItemContentState extends State<ItemContent> {
               ))
             ])));
   }
-}
-
-List<DataColumn> _createColumns() {
-  return [
-    DataColumn(label: Text('ID')),
-    DataColumn(label: Text('Book')),
-    DataColumn(label: Text('Author'))
-  ];
-}
-
-List<DataRow> _createRows() {
-  return [
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#101')),
-      DataCell(Text('Dart Internals')),
-      DataCell(Text('Alex Wick'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-    DataRow(cells: [
-      DataCell(Text('#100')),
-      DataCell(Text('Flutter Basics')),
-      DataCell(Text('David John'))
-    ]),
-  ];
 }

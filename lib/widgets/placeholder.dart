@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inventorypro/widgets/dashboard.dart';
-import 'package:inventorypro/widgets/item.dart';
+import 'package:inventorypro/widgets/items.dart';
 import 'package:inventorypro/widgets/users.dart';
 
 class ContentPlaceholder extends StatelessWidget {
